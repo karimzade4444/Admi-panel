@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers, deleteUser, updateUser } from "../api/users";
 import {
-    AlignLeftOutlined,
+  AlignLeftOutlined,
   DeleteOutlined,
   EditOutlined,
   EyeOutlined,
@@ -10,19 +10,28 @@ import {
 } from "@ant-design/icons";
 import { Button } from "antd";
 import { Modal } from "antd";
+import {
+  setEditCategory,
+  setEditName,
+  setEditTitle,
+  setId,
+} from "../lib/redux/slice/slice";
 
 const Blocks = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = (user) => {
-    setSelectedUser(user)
+    setSelectedUser(user);
     setIsModalOpen(true);
   };
   const handleCancel = () => {
     setIsModalOpen(false);
-    setSelectedUser(null)
+    setSelectedUser(null);
   };
+  
   const [selectedUser, setSelectedUser] = useState(null);
-  const { data, search } = useSelector((store) => store.marketPlace);
+  const { data, search, editName, editTitle, editCategory, id } = useSelector(
+    (store) => store.marketPlace,
+  );
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUsers(search));
@@ -51,10 +60,29 @@ const Blocks = () => {
                 >
                   <EyeOutlined />
                 </Button>
-                <Button type="primary" shape="circle">
+                <Button
+                  type="primary"
+                  shape="circle"
+                  onClick={() => {
+                    dispatch(
+                      setEditName(el.name),
+                      dispatch(
+                        setEditTitle(el.title),
+                        dispatch(setEditCategory(el.category), setId(el.id)),
+                      ),
+                    );
+                  }}
+                >
                   <EditOutlined />
                 </Button>
-                <Button type="primary" shape="circle" danger onClick={()=>{dispatch(deleteUser(el.id))}}>
+                <Button
+                  type="primary"
+                  shape="circle"
+                  danger
+                  onClick={() => {
+                    dispatch(deleteUser(el.id));
+                  }}
+                >
                   <DeleteOutlined />
                 </Button>
               </div>
@@ -91,6 +119,12 @@ const Blocks = () => {
             <p>{selectedUser?.category}</p>
           </div>
         </div>
+      </Modal>
+      <Modal
+       title="Редактировать карточку"
+       
+       >
+
       </Modal>
     </div>
   );

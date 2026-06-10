@@ -8,7 +8,8 @@ export const mainSlice = createSlice({
     createName: "",
     createEmail: "",
     editName: "",
-    editEmail: "",
+    editTitle: "",
+    editCategoty: "",
     id: null,
     search: "",
   },
@@ -22,8 +23,11 @@ export const mainSlice = createSlice({
     setEditName: (state, action) => {
       state.editName = action.payload;
     },
-    setEditEmail: (state, action) => {
-      state.editEmail = action.payload;
+    setEditTitle: (state, action) => {
+      state.editTitle = action.payload;
+    },
+    setEditCategory: (state, action) => {
+      state.editCategoty = action.payload;
     },
     setId: (state, action) => {
       state.id = action.payload;
@@ -43,7 +47,8 @@ export const {
   setCreateEmail,
   setCreateName,
   setEditName,
-  setEditEmail,
+  setEditTitle,
+  setEditCategory,
   setId,
   setSearch,
 } = mainSlice.actions;
