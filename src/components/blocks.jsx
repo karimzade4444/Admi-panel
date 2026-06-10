@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../api/users";
+import { getUsers, deleteUser } from "../api/users";
 import {
     AlignLeftOutlined,
   DeleteOutlined,
@@ -55,7 +55,7 @@ const Blocks = () => {
                 <Button type="primary" shape="circle">
                   <EditOutlined />
                 </Button>
-                <Button type="primary" shape="circle" danger>
+                <Button type="primary" shape="circle" danger onClick={()=>{dispatch(deleteUser(el.id))}}>
                   <DeleteOutlined />
                 </Button>
               </div>
