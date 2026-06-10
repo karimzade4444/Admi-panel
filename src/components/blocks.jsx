@@ -74,9 +74,10 @@ const Blocks = () => {
         closable={{ "aria-label": "Custom Close Button" }}
         open={isModalOpen}
         onCancel={handleCancel}
+        okText="Редактировать"
       >
         <div className="w-[95%] m-auto">
-          <div className=" h-25 bg-gray-100 rounded-xl">
+          <div className=" h-25 bg-gray-100 rounded-xl mt-10">
             <div className="p-3 leading-6">
               <p>
                 <AlignLeftOutlined /> Описание
@@ -84,7 +85,7 @@ const Blocks = () => {
               <p>{selectedUser?.title}</p>
             </div>
           </div>
-          <div>
+          <div className="p-3 flex justify-between items-center mt-5">
             <p>
               <TagsOutlined /> Категория
             </p>
