@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers, deleteUser } from "../api/users";
+import { getUsers, deleteUser, updateUser } from "../api/users";
 import {
     AlignLeftOutlined,
   DeleteOutlined,
   EditOutlined,
   EyeOutlined,
-  EyeTwoTone,
   TagsOutlined,
 } from "@ant-design/icons";
 import { Button } from "antd";
