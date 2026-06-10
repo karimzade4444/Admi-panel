@@ -12,9 +12,9 @@ const Blocks = () => {
   return (
     <div className=" grid grid-cols-3 place-items-center gap-5">
       {data?.map((el) => (
-        <div key={el.id} className="w-100 h-70 bg-white">
-          <div className="flex justify-between items-start">
-            <h1>{el.name}</h1>
+        <div key={el.id} className="w-100 h-70 bg-white rounded-xl border border-gray-300 p-5">
+          <div className="flex justify-between items-start h-15">
+            <h1 className=" font-semibold text-2xl">{el.name}</h1>
             <div className=" flex justify-center items-center gap-3">
               <Button type="primary" shape="circle">
                 <EyeOutlined />
@@ -27,6 +27,8 @@ const Blocks = () => {
               </Button>
             </div>
           </div>
+          <div className="h-20"><p className=" text-gray-500">{el.title}</p></div>
+          
         </div>
       ))}
     </div>
